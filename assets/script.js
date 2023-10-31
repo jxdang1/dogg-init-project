@@ -17,30 +17,54 @@ function fetchDogs() {
 fetchDogs();
 
 
-// Function to display search results
-function displayResults(data) {
-	const resultsDiv = document.getElementById("results");
-	resultsDiv.innerHTML = "";
-
-	if (data.length > 0) {
-		data.forEach(breed => {
-			const name = breed.name;
-			const description = breed.description ? breed.description : "No description available";
-			const image = breed.image ? `<img src="${breed.image.url}" alt="${name}" style="max-width: 150px;">` : "";
-
-			const breedDiv = document.createElement("div");
-			breedDiv.innerHTML = `
-				<h2>${name}</h2>
-				<p>Description: ${description}</p>
-				${image}
-			`;
-
-			resultsDiv.appendChild(breedDiv);
-		});
-	} else {
-		resultsDiv.innerHTML = "No results found.";
-	}
+function fetchKey() {
+	
 }
 
-// Add event listener to search button
-document.getElementById("searchButton").addEventListener("click", searchAnimals);
+var clientId = "your_client_id_here";
+var clientSecret = "your_client_secret_here";
+var redirectURI = "https://your-redirect-uri.com";
+var authURL = "xxxxx";
+var tokenURL = "xxxxx";
+var code = null;
+var refreshToken = null;
+
+function authorizeApp() {
+	var authWindow = window.open(
+		`${authURL}?response_type=code&client_id=${clientId}&redirect_uri=${redirectURI}`,
+		"_blank",
+		"width=600,height=400"
+	);
+
+	function receiveMessage(event) {
+		if (event.origin !== "xxxxx") {
+			return;
+		}
+
+		var message = JSON.parse(event.data);
+
+		if (message.type === "authorization_code") {
+			code = message.code;
+			authWindow.close();
+			fetchRefreshToken();
+		}
+	}
+
+	window.addEventListener("message", receiveMessage, false);
+}
+
+function fetchRefreshToken() {
+	fetch(tokenURL, {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: `grant_type=authorization_code&code=${code}&client_id=${clientId}&client_secret=${clientSecret}&redirect_uri=${redirectURI}`,
+	})
+		.then(function (res) {
+			return res.json();
+		})
+		.then(function (data) {
+			refreshToken = data.refresh_token;
+		});
+}
+
+authorizeApp();
