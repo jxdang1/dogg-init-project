@@ -1,6 +1,6 @@
 apiKey = "live_5dMT5wRzbGAsAzgpEy0fLL9mzKSOZRe1WKM6iGY6ntuWl1o9VRfAGDYTPirykcFs"
 
-
+// new key
 fetch('https://api.thecatapi.com/v1/images/search?breed_ids=' + dogID, {
         'x-api-key' : apiKey,
     })
@@ -19,3 +19,4 @@ fetch('https://api.thecatapi.com/v1/images/search?breed_ids=' + dogID, {
                 }
             }
 );
+
