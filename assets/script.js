@@ -16,35 +16,102 @@ function fetchDogs() {
 
 fetchDogs();
 
+// Get the #refresh button
+var btn = document.querySelector('#refresh');
 
-function fetchKey() {
-	
-}
+// Client credentials
+// Replace these with your key/secret
+var apiKey = 'fRrtYCMq6wJoA1TpfVxQLYIejIYdZZrw78saopr9YGPWywPJat';
+var secret = 'wiZjS69YBXPbE6WT8NmZVhIIu9x1i2iIsg0DCwRC';
 
-// Function to display search results
-function displayResults(data) {
-	const resultsDiv = document.getElementById("results");
-	resultsDiv.innerHTML = "";
+// Call details
+var org = '';
+var status = 'adoptable';
 
-	if (data.length > 0) {
-		data.forEach(breed => {
-			const name = breed.name;
-			const description = breed.description ? breed.description : "No description available";
-			const image = breed.image ? `<img src="${breed.image.url}" alt="${name}" style="max-width: 150px;">` : "";
+// Token
+var token, tokenType, expires;
 
-			const breedDiv = document.createElement("div");
-			breedDiv.innerHTML = `
-				<h2>${name}</h2>
-				<p>Description: ${description}</p>
-				${image}
-			`;
 
-			resultsDiv.appendChild(breedDiv);
+
+var getPets = function () {
+	return fetch('https://api.petfinder.com/v2/animals?organization=' + org + '&status=' + status,{
+		headers: {
+			'Authorization': tokenType + ' ' + token,
+			'Content-Type': 'application/x-www-form-urlencoded'
+		}
+	}).then(function (resp) {
+
+		// Return the API response as JSON
+		return resp.json();
+
+	}).then(function (data) {
+
+		// Log the pet data
+		console.log('pets', data);
+
+	}).catch(function (err) {
+
+		// Log any errors
+		console.log('something went wrong', err);
+
+	});
+};
+
+/**
+ * Get OAuth credentials
+ * @return {Promise} The fetch() Promise object
+ */
+var getOAuth = function () {
+	return fetch('https://api.petfinder.com/v2/oauth2/token', {
+		method: 'POST',
+		body: 'grant_type=client_credentials&client_id=' + apiKey + '&client_secret=' + secret,
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded'
+		}
+	}).then(function (resp) {
+
+		// Return the response as JSON
+		return resp.json();
+
+	}).then(function (data) {
+
+		// Log the API data
+		console.log('token', data);
+
+		// Store token data
+		token = data.access_token;
+		tokenType = data.token_type;
+		expires = new Date().getTime() + (data.expires_in * 1000);
+
+	}).catch(function (err) {
+
+		// Log any errors
+		console.log('something went wrong', err);
+
+	});
+};
+
+/**
+ * Get a token and fetch pets
+ */
+var makeCall = function () {
+
+	// If current token is invalid, get a new one
+	if (!expires || expires - new Date().getTime() < 1) {
+		console.log('new call');
+		getOAuth().then(function () {
+			getPets();
 		});
-	} else {
-		resultsDiv.innerHTML = "No results found.";
+		return;
 	}
-}
 
-// Add event listener to search button
-document.getElementById("searchButton").addEventListener("click", searchAnimals);
+	// Otherwise, get pets
+	console.log('from cache');
+	getPets();
+
+};
+
+makeCall();
+btn.addEventListener('click', makeCall, false);
+
+
