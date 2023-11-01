@@ -1,30 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-/* FONT AWESOME REFERENCE*/
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
-    <link rel="stylesheet" href="./assets/style.css">
-    <title>Dogginit</title>
-</head>
-=======
-=======
->>>>>>> Stashed changes
 <link rel="stylesheet" href="./assets/style.css">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doginit</title>
+    <title>Dogginit</title>
 </head>
-<h1>Doginit</h1>
+<h1>Dogginit</h1>
 <div class="carouselbox" aria-role="img" aria-label="carousel">
     <button class="prev">
         ◀ Previous
@@ -32,52 +17,42 @@
     <button class="next">
         Next ▶
     </button>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
-<body>
-    <h1>Dogginit</h1>
+</div>
 
-    <div class="carouselbox" aria-role="img" aria-label="carousel">
-        <button class="prev">◀ Previous</button>
-        <button class="next">Next ▶</button>
-    </div>
+<label for="breed">Search Breed</label>
+<input id="breed" type="search">
+    <select>
+        <option>Corgi</option>
+        <option>German Sheperd</option>
+        <option>Husky</option>
+        <option>Bulldog</option>
+        <option>Beagle</option>
+        <option>Border Collie</option>
+    </select>
+<button id="searchBtn" type="submit">Search</button>
 
-    <label for="breed">Search Breed</label>
-
-    <input id="breed" type="search">
-
-    <button id="searchBtn" type="submit">Search</button>
-
-    <div class="breed-results">
-
-        <div id="search1">
-
-            <img id="search1-img" src="">
-
-            <p id="search1-info"></p>
-        </div>
-
+<container class="breed-results">
+    <div id="search1">
+        <img id="search1-img" src="">
+        <p id="search1-info"></p>
         <div id="search2">
             <img id="search2-img" src="">
             <p id="search2-info"></p>
-        </div>
+            <div id="search3">
+                <img id="search3-img" src="">
+                <p id="search3-info"></p>
 
-        <div id="search3">
-            <img id="search3-img" src="">
-            <p id="search3-info"></p>
-        </div>
+            </div>
+</container>
 
-    </div>
+<div class="nextpageBtn">
+    <button id="nextpageBtn" type="submit">Click Here For Adoption</button>
+</div>
 
-    <div class="nextpageBtn">
-        <button id="nextpageBtn" type="submit">Click Here For Adoption</button>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<body>
     <script src="./assets/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
+
 </html>
