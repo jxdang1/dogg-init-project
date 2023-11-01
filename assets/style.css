@@ -1,3 +1,11 @@
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+/* FILEPATH: xxxxxx */
+/* Reset all default styles */
+>>>>>>> Stashed changes
 * {
 
 }
@@ -52,11 +60,24 @@ button {
     margin: 4px 2px;
     cursor: pointer;
 }
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
  
 /* three photos */
 /* would like to put border around each photo */
 .breed-results {
     display: flex;
+=======
+=======
+>>>>>>> Stashed changes
+
+/* Heading styles */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+>>>>>>> Stashed changes
 }
 
 /* add boxes around each */
