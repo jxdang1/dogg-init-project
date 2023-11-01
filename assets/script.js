@@ -2,21 +2,49 @@ async function getBreeds() {
     var response = await fetch ("https://dog.ceo/api/breeds/list/all")
     var data = await response.json()
     console.log(data);
+
+    createBreedList(data.message)
 }
 
 getBreeds();
 
 
 function createBreedList(breedList) {
-    document.getElementById("breed").innerHTML = `
-    <select>
-        <option>Choose a dog breed</option>
-        ${Object.keys(breedList).map(function (breed) {
-            return `<option>${breed}</option>`
+    console.log(Object.keys(breedList))
+    document.getElementById("breed-list").innerHTML = `
+    <select onchange="loadBreeds(this.value)">
+        <option>Choose a dog</option>
+        ${Object.keys(breedList).map(function (breeds) {
+            return `<option>${breeds}</option>`
         }).join('')}
     </select>
     `
 }
+
+
+async function loadBreeds(breed) {
+    if (breed != "Choose a dog breed") {
+        var response = await fetch("https://dog.ceo/api/breeds/image/random/3")
+        var data = await response.json()
+        console.log(data);
+
+   
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
