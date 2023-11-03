@@ -1,6 +1,7 @@
 var dropDown = document.getElementById("breed-list")
 
-
+var timer;
+var deletePhotoDelay;
 
 async function getBreeds() {
     var response = await fetch ("https://dog.ceo/api/breeds/list/all")
@@ -28,15 +29,39 @@ function createBreedList(breedList) {
 
 async function loadBreeds(breed) {
     if (breed != "Choose a dog breed") {
-        var response = await fetch("https://dog.ceo/api/breeds/image/random/3")
+        var response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random/3`)
         var data = await response.json()
         console.log(data);
-
-   
+        createThreeImages(data.message);
     }
 }
 
+function createThreeImages(images) {
+    let currentPosition = 0
+    clearInterval(timer);
+    clearTimeout(deletePhotoDelay);
+    document.getElementById("breed-images").innerHTML = `
+    <div class="breed-images" style="background-image: url('${images[0]}')"></div>
+    <div class="breed-images" style="background-image: url('${images[1]}')"></div>
+    <div class="breed-images" style="background-image: url('${images[2]}')"></div>
+    `
+    currentPosition +=2
+    setInterval(nextSlide, 3000)
 
+    function nextSlide () {
+        document.getElementById("breed-images").insertAdjacentHTML("beforeend", `<div class="breed-images" style="background-image: url('${images[currentPosition]}')"></div>`)
+        deletePhotoDelay = setTimeout(function() {
+            document.querySelector(".breed-images").remove()
+        }, 1000)
+        if (currentPosition + 1 >= images.length) {
+            currentPosition = 0
+
+        } else {
+            currentPosition++
+        }
+ 
+    }
+}
 
 
 
