@@ -1,9 +1,8 @@
-* {
-
-}
-
 body {
-    background-color: rgb(243, 237, 237);
+    background-color: #D6E4E5;
+    display: flex;
+    flex-flow:column;
+    justify-content: center;
 }
 
 header {
@@ -17,44 +16,49 @@ h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
-    background-color: beige;
+    background-color: #EFF5F5;
 }
 
-.carouselbox {
+#searchPoint {
     display: flex;
-    flex-shrink: 0;
-    width: 100%;
-    height: 300px;
-    scroll-snap-align: start;
-    scroll-behavior: smooth;
-    background: blue;
+    flex-flow:column;
     justify-content: center;
-    align-items: center;
 }
 
-/* make search text bold */
-searchbtn {
-    text-align: center;
-    text-decoration: none;
-    
+#searchPoint > label, #searchPoint > select {
+    margin: auto;
+}
+
+#breed-list {
+    margin: auto;
+}
+
+option {
+    text-transform: capitalize;
 }
 
 /* Button styles */
 button {
-    background-color: #4CAF50; /* Green */
+    background-color: #EB6440;
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    /* display: inline-block; */
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 4px auto;
     cursor: pointer;
 }
- 
-/* three photos */
-/* would like to put border around each photo */
+
+
+.breed-results {
+    display: flex;
+}
+
+.nextpageBtn {
+    margin: auto;
+
 .breed-images {
     justify-content: center;
     background-color: rgb(122, 122, 214);
@@ -83,21 +87,31 @@ button {
 /* add boxes around each */
 infoboxs {
     display: flex;
-}
 
-nextpageBtn {
-
-}
-
-/* should we add who its made by here? */
-footer {
- text-align: center;
 }
 
 @media screen and (max-width: 768px) {
 
 }
 
+
+/* searchbtn {
+    text-align: center;
+    text-decoration: none;
+    
+} */
+
+/* .carouselbox {
+    display: flex;
+    flex-shrink: 0;
+    width: 100%;
+    height: 300px;
+    scroll-snap-align: start;
+    scroll-behavior: smooth;
+    background: blue;
+    justify-content: center;
+    align-items: center;
+} */
 
 /* h2 {
     font-size: 24px;
@@ -116,8 +130,8 @@ h3 {
 
 /* Hover over button styles */
 
-#nextButton {
-    background-color: #4CAF50; /* Green */
+/* #nextButton {
+    background-color: #4CAF50; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -131,4 +145,4 @@ h3 {
 
 #nextButton:hover {
     background-color: #45a049;
-}
+} */ 
