@@ -1,4 +1,8 @@
 var dropDown = document.getElementById("breed-list")
+var dogSelection;
+var dogBreedArray;
+var dogId;
+
 
 var dogSelection;
 var dogBreedArray;
@@ -41,6 +45,10 @@ async function loadBreeds(breed) {
         // console.log(data);
 
 
+        //Second API
+        console.log(data);
+        createThreeImages(data.message);
+
     }
 }
 //Second API
@@ -59,12 +67,12 @@ function createThreeImages(images) {
     <div class="breed-images" style="background-image: url('${images[1]}')"></div>
     <div class="breed-images" style="background-image: url('${images[2]}')"></div>
     `
-    currentPosition +=2
+    currentPosition += 2
     setInterval(nextSlide, 3000)
 
-    function nextSlide () {
+    function nextSlide() {
         document.getElementById("breed-images").insertAdjacentHTML("beforeend", `<div class="breed-images" style="background-image: url('${images[currentPosition]}')"></div>`)
-        deletePhotoDelay = setTimeout(function() {
+        deletePhotoDelay = setTimeout(function () {
             document.querySelector(".breed-images").remove()
         }, 1000)
         if (currentPosition + 1 >= images.length) {
@@ -73,9 +81,11 @@ function createThreeImages(images) {
         } else {
             currentPosition++
         }
- 
+
     }
 }
+
+
 apiKey = "live_5dMT5wRzbGAsAzgpEy0fLL9mzKSOZRe1WKM6iGY6ntuWl1o9VRfAGDYTPirykcFs"
 
 
@@ -104,22 +114,28 @@ dropDown.addEventListener("change", function (e) {
     console.log("hi")
     // console.log(e.target.value)
     dogSelection = e.target.value
+
 getDogId()
 })
 function getDogId (){
+
     for (let index = 0; index < dogBreedArray.length; index++) {
         const element = dogBreedArray[index];
         // console.log(element.name) 
         var lowercaseName = element.name.toLowerCase();
-       
+
         if (dogSelection === lowercaseName){
+
             dogId = element.reference_image_id
             console.log(element)
             getDogImg()
         }
     }
 }
+
+
 function getDogImg(){
+
     fetch('https://api.thedogapi.com/v1/images/' + dogId, {
         'x-api-key': apiKey,
     })
@@ -140,6 +156,6 @@ function getDogImg(){
                     });
                 }
             }
-    
+
         );
 }
