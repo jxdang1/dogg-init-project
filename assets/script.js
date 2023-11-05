@@ -4,6 +4,11 @@ var dogBreedArray;
 var dogId;
 
 
+var dogSelection;
+var dogBreedArray;
+var dogId;
+
+
 var timer;
 var deletePhotoDelay;
 
@@ -39,11 +44,19 @@ async function loadBreeds(breed) {
 
         // console.log(data);
 
+
         //Second API
         console.log(data);
         createThreeImages(data.message);
+
     }
 }
+//Second API
+
+        console.log(data);
+        createThreeImages(data.message);
+    
+
 
 function createThreeImages(images) {
     let currentPosition = 0
@@ -71,25 +84,6 @@ function createThreeImages(images) {
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 apiKey = "live_5dMT5wRzbGAsAzgpEy0fLL9mzKSOZRe1WKM6iGY6ntuWl1o9VRfAGDYTPirykcFs"
@@ -120,22 +114,28 @@ dropDown.addEventListener("change", function (e) {
     console.log("hi")
     // console.log(e.target.value)
     dogSelection = e.target.value
-    getDogId()
+
+getDogId()
 })
-function getDogId() {
+function getDogId (){
+
     for (let index = 0; index < dogBreedArray.length; index++) {
         const element = dogBreedArray[index];
         // console.log(element.name) 
         var lowercaseName = element.name.toLowerCase();
 
-        if (dogSelection === lowercaseName) {
+        if (dogSelection === lowercaseName){
+
             dogId = element.reference_image_id
             console.log(element)
             getDogImg()
         }
     }
 }
-function getDogImg() {
+
+
+function getDogImg(){
+
     fetch('https://api.thedogapi.com/v1/images/' + dogId, {
         'x-api-key': apiKey,
     })
