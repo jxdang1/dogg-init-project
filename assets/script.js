@@ -47,8 +47,8 @@ async function loadBreeds(breed) {
 
         console.log(data);
         createThreeImages(data.message);
-    }
-}
+    
+
 
 function createThreeImages(images) {
     let currentPosition = 0
