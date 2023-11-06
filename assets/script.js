@@ -59,7 +59,7 @@ function createThreeImages(images) {
     <div class="breed-images" style="background-image: url('${images[2]}')"></div>
     `
     currentPosition += 2
-    setInterval(nextSlide, 5000)
+    setInterval(nextSlide, 3000)
 
     function nextSlide() {
         document.getElementById("breed-images").insertAdjacentHTML("beforeend", `<div class="breed-images" style="background-image: url('${images[currentPosition]}')"></div>`)
@@ -98,7 +98,7 @@ function createThreeImages(images) {
         //print searched dog name on page
         var dogBreedName = document.querySelector("h3");
         dogBreedName.textContent = result[0].name;
-         dogBreedName.setAttribute("name", dogBreedName);
+        dogBreedName.setAttribute("name", dogBreedName);
   
 
         //print searched dog attribute
