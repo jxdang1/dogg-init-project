@@ -83,7 +83,7 @@ button {
 .breed-images:nth-last-child(2) {
     opacity: 1;
     transform: scale(1);
-    height: 65vh;
+    height: 40vh;
     width: 100%;
 }
 

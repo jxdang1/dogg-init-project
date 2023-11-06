@@ -44,20 +44,11 @@ async function loadBreeds(breed) {
 
         // console.log(data);
 
-
-        //Second API
         console.log(data);
         createThreeImages(data.message);
 
     }
 }
-//Second API
-
-        console.log(data);
-        createThreeImages(data.message);
-    
-
-
 function createThreeImages(images) {
     let currentPosition = 0
     clearInterval(timer);
@@ -68,7 +59,7 @@ function createThreeImages(images) {
     <div class="breed-images" style="background-image: url('${images[2]}')"></div>
     `
     currentPosition += 2
-    setInterval(nextSlide, 3000)
+    setInterval(nextSlide, 5000)
 
     function nextSlide() {
         document.getElementById("breed-images").insertAdjacentHTML("beforeend", `<div class="breed-images" style="background-image: url('${images[currentPosition]}')"></div>`)
@@ -85,77 +76,119 @@ function createThreeImages(images) {
     }
 }
 
+  //SECOND API - Ninja Api Code
+  //Code Ninjas API key: XGx8COdl4bKZRSqRzefXXA==gkCTZ0zCQ0rQbUxR
+  //Sample Request URL: https://api.api-ninjas.com/v1/dogs?name=
+  
+  var userInput = $("#searchInput");
+  var searchResults = $("#search-results");
+  
+  //search dog button
+  searchResults.on("click", function () {
+    var dogName = userInput.val();
+  
+    //ninja-api
+    $.ajax({
+      method: "GET",
+      url: "https://api.api-ninjas.com/v1/dogs?name=" + dogName,
+      headers: { "X-Api-Key": "XGx8COdl4bKZRSqRzefXXA==gkCTZ0zCQ0rQbUxR" },
+      contentType: "application/json",
+      success: function (result) {
+        console.log(result);
+        //print searched dog name on page
+        var dogBreedName = document.querySelector("h3");
+        dogBreedName.textContent = result[0].name;
+         dogBreedName.setAttribute("name", dogBreedName);
+  
 
-apiKey = "live_5dMT5wRzbGAsAzgpEy0fLL9mzKSOZRe1WKM6iGY6ntuWl1o9VRfAGDYTPirykcFs"
-
-
-fetch('https://api.thedogapi.com/v1/breeds?q=harrier', {
-    'x-api-key': apiKey,
-})
-    .then(
-        function (response) {
-            if (response.status !== 200) {
-                console.log(response.status);
-                return
-            } else {
-                response.json().then(function (data) {
-                    //image is stored in an array, so we need to access it with [0] index
-                    dogImage = data[0].url;
-                    //adds url to "src" attribute
-                    // imgContainer.src = dogImage;
-                    // console.log(data)
-                    dogBreedArray = data
-                });
-            }
-        }
-
-    );
-dropDown.addEventListener("change", function (e) {
-    console.log("hi")
-    // console.log(e.target.value)
-    dogSelection = e.target.value
-
-getDogId()
-})
-function getDogId (){
-
-    for (let index = 0; index < dogBreedArray.length; index++) {
-        const element = dogBreedArray[index];
-        // console.log(element.name) 
-        var lowercaseName = element.name.toLowerCase();
-
-        if (dogSelection === lowercaseName){
-
-            dogId = element.reference_image_id
-            console.log(element)
-            getDogImg()
-        }
-    }
-}
+        //print searched dog attribute
+        // console.log("image", result[0].image_link);
+        var attrOne = document.getElementById("bark");
+        var attrTwo = document.getElementById("energy");
+        var attrThree = document.getElementById("shedding");
+        var attrFour = document.getElementById("trainability");
+        attrOne.textContent = result[0].barking;
+        attrTwo.textContent = result[0].energy;
+        attrThree.textContent = result[0].shedding;
+        attrFour.textContent = result[0].trainability;
+   
+      },
+      error: function ajaxError(jqXHR) {
+        console.error("Error: ", jqXHR.responseText);
+      },
+    });
+  });
+  
+// apiKey = "live_5dMT5wRzbGAsAzgpEy0fLL9mzKSOZRe1WKM6iGY6ntuWl1o9VRfAGDYTPirykcFs"
 
 
-function getDogImg(){
+// fetch('https://api.thedogapi.com/v1/breeds?q=harrier', {
+//     'x-api-key': apiKey,
+// })
+//     .then(
+//         function (response) {
+//             if (response.status !== 200) {
+//                 console.log(response.status);
+//                 return
+//             } else {
+//                 response.json().then(function (data) {
+//                     //image is stored in an array, so we need to access it with [0] index
+//                     dogImage = data[0].url;
+//                     //adds url to "src" attribute
+//                     // imgContainer.src = dogImage;
+//                     // console.log(data)
+//                     dogBreedArray = data
+//                 });
+//             }
+//         }
 
-    fetch('https://api.thedogapi.com/v1/images/' + dogId, {
-        'x-api-key': apiKey,
-    })
-        .then(
-            function (response) {
-                if (response.status !== 200) {
-                    // console.log(response.status);
-                    return
-                } else {
-                    response.json().then(function (data) {
-                        //image is stored in an array, so we need to access it with [0] index
-                        // dogImage = data[0].url;
-                        //adds url to "src" attribute
-                        // imgContainer.src = dogImage;
-                        // console.log(data)
-                        dogBreedArray = data
-                        console.log(data)
-                    });
-                }
-            }
+//     );
+// dropDown.addEventListener("change", function (e) {
+//     console.log("hi")
+//     // console.log(e.target.value)
+//     dogSelection = e.target.value
 
-        );
-}
+// getDogId()
+// })
+// function getDogId (){
+
+//     for (let index = 0; index < dogBreedArray.length; index++) {
+//         const element = dogBreedArray[index];
+//         // console.log(element.name) 
+//         var lowercaseName = element.name.toLowerCase();
+
+//         if (dogSelection === lowercaseName){
+
+//             dogId = element.reference_image_id
+//             console.log(element)
+//             getDogImg()
+//         }
+//     }
+// }
+
+
+// function getDogImg(){
+
+//     fetch('https://api.thedogapi.com/v1/images/' + dogId, {
+//         'x-api-key': apiKey,
+//     })
+//         .then(
+//             function (response) {
+//                 if (response.status !== 200) {
+//                     // console.log(response.status);
+//                     return
+//                 } else {
+//                     response.json().then(function (data) {
+//                         //image is stored in an array, so we need to access it with [0] index
+//                         // dogImage = data[0].url;
+//                         //adds url to "src" attribute
+//                         // imgContainer.src = dogImage;
+//                         // console.log(data)
+//                         dogBreedArray = data
+//                         console.log(data)
+//                     });
+//                 }
+//             }
+
+//         );
+// }

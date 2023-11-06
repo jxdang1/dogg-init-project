@@ -15,38 +15,47 @@
 
 <body>
     <h1><i class="fas fa-dog"></i>Dogginit</h1>
-    <div id="searchPoint">
-        <label for="breed">Search Breed</label>
-
         <div id="breed-list">
         </div>
     </div>
-    <button id="searchBtn" type="submit">Search</button>
 
-    <container class="breed-results" id="breed-images">
-        <div id="search1">
-            <img id="search1-img" src="">
-            <p id="search1-info"></p>
+    <div class="breed-results" id="breed-images"></div>
+    <div id="searchPoint">
+        <input placeholder="Enter Dog Breed" id="searchInput" type="text" class="search-input">
+            <button id="search-results">SEARCH</button>
+                </div>
+            </div>
+
+</div>
+
+    <div class="row"></div>
+
+            <div class="rightside col s9">
+                <h3 id="appendImg">Dog Breed Name</h3>
+            </div>
         </div>
-        <div id="search2">
-            <img id="search2-img" src="">
-            <p id="search2-info"></p>
-        </div>
-        <div id="search3">
-            <img id="search3-img" src="">
-            <p id="search3-info"></p>
-
-        </div>
-    </container>
-
-    <div class="breed-results" id="breed-images">
-
     </div>
+            <div class="cardtwo col s9">
+                <h4>Dog Attributes</h4>
+                <p>On a scale of 1-5</p>
+                <ul>
+                    <li>Barking: <span id="bark"></span></li>
+                    <li>Energy: <span id="energy"></span></li>
+                    <li>Shedding: <span id="shedding"></span></li>
+                    <li>Trainability: <span id="trainability"></span></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
 
     <footer>
         <p> Made by: Curtis Z., Jennifer D., Chris V., & Vanessa D.</p>
     </footer>
 
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
