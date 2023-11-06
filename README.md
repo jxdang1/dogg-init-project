@@ -18,7 +18,7 @@ Users will start by clicking on the drop down button "Choose a dog" that will pr
 
 ![Screenshot of drop down with dog images](./assets/dog-drop-down-ss.jpg)
 
-Users will then write the same dog breed in the search bar down "Enter dog breed" below to get the attributes of the dog breed on the scale of 1-5 (barking, energy, shedding, and trainability)
+Users will then write the same dog breed in the search bar down "Enter dog breed" below to get the attributes of the dog breed on the scale of 1-5 (barking, energy, shedding, and trainability).
 
 ![Screenshot of the search bar with dog attributes](./assets/dog-searchbar-ss.jpg)
 
