@@ -16,10 +16,11 @@ The application can be viewed via [GitHubPages](https://github.com/jxdang1/dogg-
 
 Users will start by clicking on the drop down button "Choose a dog" that will prompt them with different dog breeds. This will give them a slideshow of images of that specific dog breed. 
 
+![Screenshot of drop down with dog images](./assets/dog-drop-down-ss.jpg)
 
 Users will then write the same dog breed in the search bar down "Enter dog breed" below to get the attributes of the dog breed on the scale of 1-5 (barking, energy, shedding, and trainability)
 
-
+![Screenshot of the search bar with dog attributes](./assets/dog-searchbar-ss.jpg)
 
 ## Credits
 
@@ -30,7 +31,7 @@ Users will then write the same dog breed in the search bar down "Enter dog breed
 
 ## Contributors
 
-Jennifer Dang, Vanessa Dustin, Curtis Zahniser, Christopher Villegas
+Jennifer Dang, Vanessa Dusin, Curtis Zahniser, Christopher Villegas
 
 ## License
 
